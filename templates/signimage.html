@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gesture Language Translator</title>
+    <style>  
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: url("{{ url_for('static', filename='background.jpg') }}") no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #ff7200;
+            font-size: 24px;
+            font-weight: bold;
+            font-family: Arial;
+        }
+
+        .menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .menu ul li {
+            margin-left: 30px;
+        }
+
+        .menu ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.4s ease-in-out;
+        }
+
+        .menu ul li a:hover {
+            color: #ff7200;
+        }
+
+        /* Search Container */
+        .search-container {
+            text-align: center;
+            margin-top: 150px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+        }
+
+        input {
+            width: 250px;
+            height: 40px;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ff7200;
+            border-radius: 5px;
+        }
+
+        button {
+            height: 40px;
+            background-color: #ff7200;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            padding: 0 15px;
+        }
+
+        /* Image Display */
+        #image-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #signImage {
+            width: 400px;
+            height: auto;
+            display: none;
+            border: 3px solid #ff7200;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">Gesture Language Translator</div>
+        <div class="menu">
+            <ul>
+                <li><a href="{{ url_for('index') }}">HOME</a></li>
+                <li><a href="{{ url_for('about') }}">ABOUT</a></li>
+                <li><a href="{{ url_for('service') }}">SERVICE</a></li>
+                <li><a href="{{ url_for('signimage') }}">SIGN IMAGES</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Search Section -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Enter a word (e.g., HELLO)">
+        <button onclick="searchImage()">Search</button>
+    </div>
+
+    <!-- Sign Image Display -->
+    <div id="image-container">
+        <img id="signImage" src="" alt="Sign Language">
+    </div>
+
+    <script>
+        function searchImage() {
+            let query = document.getElementById("searchInput").value.toUpperCase();
+            let image = document.getElementById("signImage");
+
+            // Updated dictionary with more sign images
+            let images = {
+                "HELLO": "/static/signs/hello.jpg",
+                "THANK YOU": "/static/signs/thankyou.jpg",
+                "PLEASE": "/static/signs/please.jpg",
+                "YES": "/static/signs/yes.jpg",
+                "NO": "/static/signs/no.jpg",
+                "SORRY": "/static/signs/sorry.jpg",
+                "GOODBYE": "/static/signs/goodbye.jpg",
+                "LOVE": "/static/signs/love.jpg",
+                "HELP": "/static/signs/help.jpg",
+                "FRIEND": "/static/signs/friend.jpg",
+                "BYE":"/static/signs/bye.jpg"
+            };
+
+            if (images[query]) {
+                image.src = images[query];
+                image.style.display = "block";
+            } else {
+                alert("Sign image not found. Try 'HELLO', 'THANK YOU', 'PLEASE', 'YES', 'NO', 'SORRY', etc.");
+                image.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
