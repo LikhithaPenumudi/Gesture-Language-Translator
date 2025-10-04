@@ -29,7 +29,7 @@ Environment Management: Conda
 Follow these steps to set up and run the project locally 👇
 
 1️⃣ Clone the repository
-git clone https://github.com/your-username/Gesture-Language-Translator.git
+git clone https://github.com/LikhithaPenumudi/Gesture-Language-Translator
 cd Gesture-Language-Translator
 
 2️⃣ Initialize Conda environment
@@ -71,11 +71,9 @@ Users can also type text and get corresponding sign language images.
 🧑‍💻 Project Lead
 
 Likhitha Penumudi
-📍 Guntur, Andhra Pradesh
 📧 likhithapenumudi@gmail.com
 
-🔗 LinkedIn
- | GitHub
+
 
 💡 Future Enhancements
 
